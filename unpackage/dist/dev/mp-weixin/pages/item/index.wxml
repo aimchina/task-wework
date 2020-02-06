@@ -1,1 +1,38 @@
+<<<<<<< HEAD
 <view class="content"><block wx:if="{{dis}}"><view class="box"><view class="ctx"><label class="_span">加星号的项目</label></view><view class="context"><view class="_ul"><block wx:for="{{impList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['godetail',['$0'],[[['impList','',index,'t_id']]]]]],['touchstart',[['delItem',['$0'],[[['impList','',index,'t_id']]]]]],['touchmove',[['touchmove',['$event']]]],['touchend',[['touchend',['$event']]]]]}}" catchtap="__e" bindtouchstart="__e" bindtouchmove="__e" bindtouchend="__e" class="_li">{{''+item.t_teamName+''}}</view></block></view></view></view></block><block wx:if="{{dis}}"><view class="box2"><view class="ctx"><label class="_span">我的项目</label></view><view class="context2"><view class="_ul"><block wx:for="{{commonList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><view data-event-opts="{{[['tap',[['godetail',['$0'],[[['commonList','',index,'t_id']]]]]],['touchstart',[['delItem',['$0'],[[['commonList','',index,'t_id']]]]]],['touchmove',[['touchmove',['$event']]]],['touchend',[['touchend',['$event']]]]]}}" catchtap="__e" bindtouchstart="__e" bindtouchmove="__e" bindtouchend="__e" class="_li"><label class="_span"><image src alt class="_img"></image></label><label class="_span">{{item.t_teamName}}</label><block wx:if="{{item.t_tag==0}}"><label class="_span"><image src="/static/images/jingdiananli_kongwujiaoxing_shoucang.png" mode data-event-opts="{{[['tap',[['setImp',['$0','$1'],[[['commonList','',index,'t_id']],[['commonList','',index,'t_tag']]]]]]]}}" catchtap="__e"></image></label></block><block wx:if="{{item.t_tag==1}}"><label class="_span"><image src="/static/images/jingdiananli_wujiaoxing_shoucanghou.png" mode data-event-opts="{{[['tap',[['setImp',['$0','$1'],[[['commonList','',index,'t_id']],[['commonList','',index,'t_tag']]]]]]]}}" catchtap="__e"></image></label></block></view></block></view></view></view></block><block wx:if="{{dataImg}}"><no-data vue-id="1" bind:__l="__l"></no-data></block><view class="{{[(show)?'fix2':'']}}"><view data-event-opts="{{[['tap',[['',['$event']]]]]}}" class="{{['_section',(showList)?'fixed_select':'',(!showList)?'fixed_select2':'']}}" catchtap="__e"><view class="select_radio"><view data-event-opts="{{[['touchstart',[['down',['$event']]]],['touchend',[['defineDel',['$event']]]]]}}" class="vw2 vw" bindtouchstart="__e" bindtouchend="__e">删除项目</view><view class="kong" style="width:100%;height:20rpx;background:#F3F3F3;"></view><view data-event-opts="{{[['tap',[['leave_list',['$event']]]]]}}" class="vw1 vw" style="border-bottom:none;" bindtap="__e">取消</view></view></view><view data-event-opts="{{[['tap',[['',['$event']]]]]}}" class="{{['_section',(!showList2)?'fixed_select3':'',(showList2)?'fixed_select4':'']}}" catchtap="__e"><view class="fixed_title2 _p">是否删除此项目</view><view class="select_radio2"><view data-event-opts="{{[['tap',[['del_plate']]]]}}" class="vw1 vw3" bindtap="__e">确定</view><view class="kong" style="width:100%;height:20rpx;background:#F3F3F3;"></view><view data-event-opts="{{[['tap',[['cancel',['$event']]]]]}}" class="vw2 vw3" bindtap="__e">取消</view></view></view></view><block wx:if="{{isShow_loading}}"><view class="box-loading"><loading13 vue-id="2" bind:__l="__l"></loading13></view></block><view hidden="{{!(isShow)}}"><uni-load-more vue-id="3" status="{{status}}" bind:__l="__l"></uni-load-more></view></view>
+=======
+<view class="content">
+  <view class="box">
+    <view class="ctx">
+      <label class="_span">加星号的项目</label>
+    </view>
+    <view class="context">
+      <view class="_ul">
+        <block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view data-event-opts="{{[['tap',[['godetail']]]]}}" bindtap="__e" class="_li">{{''+item.content+''}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="box2">
+    <view class="ctx">
+      <label class="_span">最近查看的项目</label>
+    </view>
+    <view class="context2">
+      <view class="_ul">
+        <block wx:for="{{list2}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view data-event-opts="{{[['tap',[['godetail']]]]}}" bindtap="__e" class="_li">
+            <label class="_span">
+              <image src alt class="_img"></image>
+            </label>
+            <label class="_span">{{item.content}}</label>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{!(isShow)}}">
+    <uni-load-more vue-id="1" status="{{status}}" bind:__l="__l"></uni-load-more>
+  </view>
+</view>
+>>>>>>> 48104a504c07c154c803fa45e1d0928ac2730caa
