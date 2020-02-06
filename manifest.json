@@ -64,7 +64,7 @@
         "domain" : "",
         "template" : "index.html",
         "router" : {
-            "base" : "relapath"
+            "base" : "/h5"
         }
     },
     "networkTimeout" : {
