@@ -1,0 +1,21 @@
+
+.list-item {
+	width: 100%;
+	list-style: none;
+	background-color: #fff;
+	font-size: 30rpx;
+	/* margin: 10upx 0; */
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 20rpx;
+	overflow: hidden;
+	-webkit-border-radius: 10rpx;
+	        border-radius: 10rpx;
+	word-wrap: break-word;
+	position: relative;
+	border-bottom: 2rpx solid #F3F3F3;
+}
+
+
+
+/*# sourceMappingURL=../../../.sourcemap/mp-baidu/pages/search-item/index.js.map*/

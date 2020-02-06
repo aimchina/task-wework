@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/item/index",
+    "pages/task/index",
+    "pages/additem/index",
+    "pages/itemdetail/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#4f9efb",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/item/index",
+        "text": "项目"
+      },
+      {
+        "pagePath": "pages/additem/index",
+        "iconPath": "static/image/add-btn.png",
+        "selectedIconPath": "static/image/add-btn.png",
+        "text": ""
+      },
+      {
+        "pagePath": "pages/task/index",
+        "text": "任务"
+      }
+    ]
+  },
+  "usingComponents": {
+    "tab-bar": "/components/tabbar",
+    "header-top": "/components/header"
+  }
+}

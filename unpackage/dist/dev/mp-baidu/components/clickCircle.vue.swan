@@ -1,0 +1,1 @@
+<template name="0afa7610"><view s-if="{{ h[ 0 ]._if }}" class="_view circle {{ h[ 0 ].cl }} {{ h[ 0 ].rcl }}" style="{{ h[ 0 ].st }}"></view></template>

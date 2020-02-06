@@ -1,0 +1,315 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .footer {
+	height: 120upx;
+	position: fixed;
+	bottom: -4upx;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	background-color: #FFFFFF;
+	color: #fff;
+	line-height: 120upx;
+	border-top: 2upx solid #f3f3f3;
+	color: #000;
+	width: 100%;
+	padding-bottom: 30upx !important;
+}
+
+.footer_item {
+	float: left;
+	width: 20%;
+	text-align: center !important;
+	font-size: 28upx;
+	height: 120upx;
+} */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+.footer {
+		height: 120rpx;
+		position: fixed;
+		bottom: -4rpx;
+		left: 0;
+		width: 100%;
+		z-index: 999;
+		background-color: #FFFFFF;
+		color: #fff;
+		line-height: 120rpx;
+		border-top: 2rpx solid #f3f3f3;
+		color: #000;
+		width: 100%;
+		padding-bottom: 50rpx !important;
+}
+}
+@supports (bottom: env(safe-area-inset-bottom)) {
+page,
+	.footer {
+		padding-bottom: constant(safe-area-inset-bottom);
+		padding-bottom: env(safe-area-inset-bottom);
+}
+}
+.act {
+	color: #4f9efb !important;
+}
+.btn {
+	width: 250rpx;
+	height: 120rpx;
+	position: absolute;
+	left: 50%;
+	margin-left: -125rpx;
+}
+.img {
+	position: absolute;
+	left: 50%;
+	margin-left: -50rpx;
+	top: 0;
+	width: 100rpx;
+	height: 100rpx;
+}
+._li {
+	list-style: none;
+}
+.ull .lii {
+	width: 200rpx;
+	height: 100rpx;
+	/* background: blue; */
+	background: red;
+	text-align: center;
+	font-size: 20rpx;
+	float: left;
+	margin: 20rpx;
+	color: #fff;
+}
+.fix2 {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.4);
+	z-index: 99;
+}
+.fixed_select {
+	width: 100%;
+	height: 400rpx;
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: -50%;
+	background: white;
+	/* z-index: 888; */
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	overflow: hidden;
+}
+.fixed_select2 {
+	width: 100%;
+	height: 400rpx;
+	
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: 100rpx;
+	background: white;
+	/* z-index: 51; */
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	overflow: hidden;
+}
+.footer {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 998;
+	height: 100rpx;
+}
+.footer uni-tabbar {
+	display: block;
+	width: 100%;
+	height: 100rpx;
+}
+uni-tabbar .uni-tabbar-border {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 1px;
+	-webkit-transform: scaleY(.5);
+	-ms-transform: scaleY(.5);
+	    transform: scaleY(.5);
+}
+uni-tabbar .uni-tabbar__bd,
+uni-tabbar .uni-tabbar__item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	    align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+}
+uni-tabbar .uni-tabbar__item {
+	-webkit-flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	    flex: 1;
+	font-size: 0;
+	text-align: center;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+uni-tabbar .uni-tabbar__bd {
+	position: relative;
+	height: 50px;
+	-webkit-flex-direction: column;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+uni-tabbar .uni-tabbar__bd,
+uni-tabbar .uni-tabbar__item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	    align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+}
+uni-tabbar .uni-tabbar__icon {
+	position: relative;
+	display: inline-block;
+	margin-top: 5px;
+	width: 27px;
+	height: 27px;
+}
+uni-tabbar .uni-tabbar__icon ._img {
+	width: 100%;
+	height: 100%;
+}
+uni-tabbar .uni-tabbar__label {
+	position: relative;
+	text-align: center;
+	font-size: 10px;
+	line-height: 1.8;
+}
+

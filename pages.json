@@ -1,0 +1,93 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/item/index"
+		},
+		{
+			"path": "pages/task/index"
+		},
+		{
+			"path": "pages/additem/index"
+		},
+		{
+			"path": "pages/itemdetail/index"
+		},
+		{
+			"path": "pages/missiondetail/index"
+		},
+		{
+		    "path" : "pages/customlist/index"
+		},
+		{
+		    "path" : "pages/addfile/index"
+		},
+		{
+		    "path" : "pages/addprice/index"
+		},
+		{
+		    "path" : "pages/memberlist/index"
+		},
+		{
+		    "path" : "pages/know/index"
+		},
+		{
+		    "path" : "pages/ceshi/index"
+		},
+		{
+		    "path" : "pages/itemdetail2/index"
+		},
+		{
+		    "path" : "pages/login/index"
+		},
+		{
+		    "path" : "pages/mouldList/index"
+		},
+		{
+		    "path" : "pages/search-item/index"
+		},
+		{
+		    "path" : "pages/relehand/index"
+		}
+    ],
+	// #ifdef H5
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "handone",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	// #endif
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#4f9efb",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/item/index",
+				"text": "项目"
+			},
+			{
+				"pagePath": "pages/additem/index",
+				"iconPath": "static/image/add-btn.png",
+				"selectedIconPath": "static/image/add-btn.png",
+				"text": ""
+			},
+			{
+				"pagePath": "pages/task/index",
+				"text": "任务"
+			}
+		]
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+
+}

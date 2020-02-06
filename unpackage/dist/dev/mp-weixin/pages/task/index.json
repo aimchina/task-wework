@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "slick-item": "/node-modules/vue-slicksort/dist/vue-slicksort.umd",
+    "slick-list": "/node-modules/vue-slicksort/dist/vue-slicksort.umd"
+  }
+}

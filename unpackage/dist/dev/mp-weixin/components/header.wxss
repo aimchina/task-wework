@@ -1,0 +1,47 @@
+
+.header{
+	width: 100%;
+	height: 100rpx;
+	background: rgb(74,119,176);
+	padding: 0 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	color: #FFFFFF;
+	line-height: 100rpx;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	text-align: center;
+}
+.sp1{
+	display: block;
+	/* width: 120upx; */
+	height: 60rpx;
+	position: absolute;
+	top: 50%;
+	margin-top: -30rpx;
+	left: 0;
+}
+.sp1 image{
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	top: 50%;
+	left: 20rpx;
+	/* margin-left: -20upx; */
+	margin-top: -20rpx;
+}
+.sp1  ._span{
+	display: block;
+	position: absolute;
+	left: 60rpx;
+	top: 0;
+	width:100rpx;
+	height:60rpx;
+	text-align: left;
+	line-height: 60rpx;
+	font-size: 28rpx;
+}
+
+
