@@ -1,0 +1,30 @@
+
+page {
+	background: #F3F3F3;
+}
+.add {
+	width: 100%;
+	height: 100rpx;
+	background: #fff;
+}
+.add input {
+	width: 60%;
+	margin: 0 auto;
+	font-size: 28rpx;
+	height: 100rpx;
+}
+.btn {
+	width: 600rpx;
+	height: 80rpx;
+	text-align: center;
+	line-height: 80rpx;
+	font-size: 28rpx;
+	color: #FFFFFF;
+	background: #e14b16;
+	margin: 50rpx auto 0;
+	-webkit-border-radius: 20rpx;
+	        border-radius: 20rpx;
+}
+
+
+/*# sourceMappingURL=../../../.sourcemap/mp-baidu/pages/addprice/index.js.map*/

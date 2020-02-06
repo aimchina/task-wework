@@ -1,0 +1,2 @@
+<import src="/htmlparse/index.swan" />
+        <template name="4df08d4f"><template is="octoParse" data="{{ nodes: h[ 0 ].html }}"/></template>

@@ -1,0 +1,1 @@
+<template name="141cb72f"><view class="_div {{ h[ 0 ].rcl }}"><view class="_view add"><input class="_input" type="number" value="{{ h[ 2 ].value }}" placeholder="请输入价格" data-cid="{{ _c || c }}" data-hid="{{ 2 }}" bindinput="_pe"/></view><view class="_view btn">完成</view></view></template>
