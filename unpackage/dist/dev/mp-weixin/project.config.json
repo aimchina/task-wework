@@ -16,9 +16,11 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
 	"appid": "touristappid",
-	"projectname": "uni-app石榴CRM",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"projectname": "uni-app%E7%9F%B3%E6%A6%B4CRM",
+	"simulatorType": "qywx_simulator_plugin",
+	"simulatorPluginLibVersion": {
+		"qywx_simulator_plugin": "1.2.0"
+	},
 	"condition": {
 		"search": {
 			"current": -1,

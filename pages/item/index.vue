@@ -35,6 +35,7 @@
 				</ul>
 			</view>
 		</view>
+		<no-data v-if="dataImg"></no-data>
 		<view :class="{'fix2':show}">
 			<section v-isIphoneX :class="{'fixed_select':showList,'fixed_select2':!showList}" @click.stop>
 				<!-- <p class="fixed_title">{{item.name}}</p> -->
@@ -65,6 +66,7 @@
 
 <script>
 	import hex_sha1 from "sha1";
+	import noData from '../../components/noData/noData.vue'
 	import uniLoadMore from "@/components/uni-load-more.vue";
 	import Loading13 from "@/components/loading/loading13.vue";
 	import axios from "axios";
@@ -94,12 +96,60 @@
 				show: false,
 				showList: false,
 				showList2: false,
-				isdown: ''
+				isdown: '',
+				dataImg:false
 			}
 		},
 		components: {
 			uniLoadMore,
 			Loading13,
+			noData
+		},
+		onLoad(e) {
+			var ua = navigator.userAgent.toLowerCase()
+			console.log('index')
+			if (ua.indexOf('iphone') != -1 || ua.indexOf('android') != -1) {
+				this.isShow_loading = true
+				var list = uni.getStorageSync('login');
+				// alert(JSON.stringify(list))
+				if (list.access_token) {
+					uni.request({
+						url: 'https://testapi.shiliucrm.com/v1/hwechat_callback/callbacktask/authorize',
+						data: {
+							access_token: list.access_token
+						},
+						success: (res) => {
+							// alert(JSON.stringify(res))
+							if (res.data == 1) {
+								this.accessToken = list.access_token
+								this.appsercert = list.appsercert
+								this.getlist()
+							} else {
+								window.location.href =
+									'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/h5/%23/pages/login/index&response_type=code&scope=snsapi_privateinfo#wechat_redirect'
+							}
+						},
+						fail: (err) => {
+							console.log(err)
+						}
+					})
+				} else {
+					window.location.href =
+						'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/h5/%23/pages/login/index&response_type=code&scope=snsapi_privateinfo#wechat_redirect'
+				}
+				// // var list2 = JSON.parse(list)
+				// if(!list){
+				// 	
+				// }else{
+				// 	this.accessToken = list2.access_token
+				// 	this.appsercert = list2.appsercert
+				// 	this.isShow_loading = true
+				// 	this.getlist()
+				// }
+			} else if (ua.indexOf('windows') != -1 || ua.indexOf('mac') != -1) {
+				window.location.href =
+					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/site/qylogin&response_type=code&scope=snsapi_userinfo#wechat_redirect  '
+			}
 		},
 		methods: {
 			gogunlain() {
@@ -128,6 +178,7 @@
 								title: '网络异常',
 								icon: 'none'
 							})
+							this.dataImg = true;
 						} else {
 							_this.dis = true
 							_this.commonList = res.data
@@ -140,6 +191,7 @@
 					})
 					.catch((error) => {
 						console.log(error);
+						this.dataImg = true;
 					});
 			},
 			//删除项目
@@ -284,49 +336,6 @@
 						})
 				}
 
-			}
-		},
-		onLoad(e) {
-			var ua = navigator.userAgent.toLowerCase()
-			console.log(ua)
-			if (ua.indexOf('iphone') != -1 || ua.indexOf('android') != -1) {
-				this.isShow_loading = true
-				var list = uni.getStorageSync('login');
-				// alert(JSON.stringify(list))
-				if (list.access_token) {
-					uni.request({
-						url: 'https://testapi.shiliucrm.com/v1/hwechat_callback/callbacktask/authorize',
-						data: {
-							access_token: list.access_token
-						},
-						success: (res) => {
-							// alert(JSON.stringify(res))
-							if (res.data == 1) {
-								this.accessToken = list.access_token
-								this.appsercert = list.appsercert
-								this.getlist()
-							} else {
-								window.location.href =
-									'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/h5/%23/pages/login/index&response_type=code&scope=snsapi_privateinfo#wechat_redirect'
-							}
-						},
-					})
-				} else {
-					window.location.href =
-						'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/h5/%23/pages/login/index&response_type=code&scope=snsapi_privateinfo#wechat_redirect'
-				}
-				// // var list2 = JSON.parse(list)
-				// if(!list){
-				// 	
-				// }else{
-				// 	this.accessToken = list2.access_token
-				// 	this.appsercert = list2.appsercert
-				// 	this.isShow_loading = true
-				// 	this.getlist()
-				// }
-			} else if (ua.indexOf('windows') != -1 || ua.indexOf('mac') != -1) {
-				window.location.href =
-					'https://open.weixin.qq.com/connect/oauth2/authorize?appid=ww05249b75c1172723&redirect_uri=http://hdtest.handone.com/site/qylogin&response_type=code&scope=snsapi_userinfo#wechat_redirect  '
 			}
 		},
 		mounted() {},
