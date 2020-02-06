@@ -4,7 +4,7 @@
 		<!-- <view @click="btn" style="width: 100%;height: 80upx; background: red; color: #fff;">点我</view> -->
 		<view class="box" v-if="dis">
 			<view class="ctx">
-				<span>加星号的项目</span>
+				<span>加星号的项目1</span>
 			</view>
 			<view class="context">
 				<ul>
@@ -17,7 +17,7 @@
 		</view>
 		<view class="box2" v-if="dis">
 			<view class="ctx">
-				<span>我的项目</span>
+				<span>我的项目1</span>
 			</view>
 			<view class="context2">
 				<ul>
@@ -178,15 +178,20 @@
 								title: '网络异常',
 								icon: 'none'
 							})
-							this.dataImg = true;
+							_this.dataImg = true;
 						} else {
-							_this.dis = true
-							_this.commonList = res.data
-							for (var i = 0; i < res.data.length; i++) {
-								if (res.data[i].t_tag == 1) {
-									_this.impList = _this.impList.concat(res.data[i])
+							_this.commonList = res.data;
+							if(_this.commonList.length == 0) {
+								_this.dataImg = true;
+							} else {
+								_this.dis = true;
+								for (var i = 0; i < res.data.length; i++) {
+									if (res.data[i].t_tag == 1) {
+										_this.impList = _this.impList.concat(res.data[i])
+									}
 								}
 							}
+							
 						}
 					})
 					.catch((error) => {
