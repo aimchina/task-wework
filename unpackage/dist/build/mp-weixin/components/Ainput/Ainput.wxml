@@ -1,0 +1,1 @@
+<view class="edit_div _div" style="-webkit-user-select:auto;" contenteditable="{{canEdit}}" data-event-opts="{{[['focus',[['e0',['$event']]]],['blur',[['e1',['$event']]]],['input',[['changeText',['$event']]]]]}}" bindfocus="__e" bindblur="__e" bindinput="__e"><rich-text nodes="{{innerText}}"></rich-text></view>

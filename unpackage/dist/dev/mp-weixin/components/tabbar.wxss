@@ -214,8 +214,7 @@ page,
 	overflow: hidden;
 }
 .footer {
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -235,23 +234,19 @@ uni-tabbar .uni-tabbar-border {
 	width: 100%;
 	height: 1px;
 	-webkit-transform: scaleY(.5);
-	-ms-transform: scaleY(.5);
-	    transform: scaleY(.5);
+	transform: scaleY(.5);
 }
 uni-tabbar .uni-tabbar__bd,
 uni-tabbar .uni-tabbar__item {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	    justify-content: center;
+	justify-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	-ms-flex-align: center;
-	    align-items: center;
+	align-items: center;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 }
@@ -259,12 +254,10 @@ uni-tabbar .uni-tabbar__item {
 	-webkit-flex-direction: column;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
-	    -ms-flex-direction: column;
 	        flex-direction: column;
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
-	-ms-flex: 1;
-	    flex: 1;
+	flex: 1;
 	font-size: 0;
 	text-align: center;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -275,23 +268,19 @@ uni-tabbar .uni-tabbar__bd {
 	-webkit-flex-direction: column;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
-	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
 uni-tabbar .uni-tabbar__bd,
 uni-tabbar .uni-tabbar__item {
 	display: -webkit-box;
 	display: -webkit-flex;
-	display: -ms-flexbox;
 	display: flex;
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
-	-ms-flex-pack: center;
-	    justify-content: center;
+	justify-content: center;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
-	-ms-flex-align: center;
-	    align-items: center;
+	align-items: center;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 }

@@ -1,0 +1,1 @@
+<view class="content"><block wx:if="{{isShow_loading}}"><view class="box-loading"><loading13 vue-id="1" bind:__l="__l"></loading13></view></block></view>

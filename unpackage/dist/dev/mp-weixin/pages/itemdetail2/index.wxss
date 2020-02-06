@@ -1,0 +1,441 @@
+
+page{
+	height:100%;
+	width:100%;
+	/*top:0;
+	left:0;*/
+	overflow:hidden;
+	-webkit-overflow-scrolling: touch;
+}
+.sortable-chosen {
+	opacity: 1 !important;
+}
+.ghostClass {
+	opacity: 0 !important;
+}
+.box1 {
+	width: 100%;
+	height: 93%;
+	background: #fff;
+	box-sizing: border-box;
+	padding: 0  40rpx 0;
+}
+.addbox1{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	padding:40rpx;
+}
+.content {
+	width: 100%;
+	height: 100%;
+	background: #F3F3F3;
+	/* border-radius: 10upx; */
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 10rpx 0;
+	position: relative;
+	position: relative;
+}
+.content2 {
+	width: 100%;
+	height: 100%;
+	/* background: #F3F3F3; */
+	/* border-radius: 10upx; */
+	box-sizing: border-box;
+	overflow: hidden;
+	padding: 10rpx 0;
+	position: relative;
+	position: relative;
+}
+.content ._span {
+	display: block;
+	width: 100%;
+	/* padding: 0 30upx 0; */
+	/* padding-left: 30upx; */
+	box-sizing: border-box;
+	font-size: 34rpx;
+	/* line-height: 80upx; */
+	overflow: hidden;
+}
+.spa {
+	padding-left: 30rpx;
+	line-height: 80rpx;
+}
+.content ._span .sp {
+	float: right;
+	width: 80rpx;
+	height: 60rpx;
+	/* margin-top: 10upx; */
+	margin: 10rpx 30rpx 0 0;
+}
+/* 	.content span .sp image {
+	;
+} */
+.list {
+	width: 100%;
+	/* height: 90%; */
+	padding: 0 30rpx;
+	padding-bottom: 10rpx;
+	box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.list-item {
+	width: 100%;
+	list-style: none;
+	background-color: #fff;
+	font-size: 30rpx;
+	margin: 10rpx 0;
+	box-sizing: border-box;
+	padding: 20rpx;
+	overflow: hidden;
+	border-radius: 10rpx;
+	word-wrap: break-word;
+	position: relative;
+}
+.list-item .box-loading {
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	top: 50%;
+	margin-top: -20rpx;
+	right: 20rpx;
+	/* margin-top: -15upx; */
+}
+.list_add,.list_add2 {
+	width: 100%;
+	height: 80rpx;
+	box-sizing: border-box !important;
+	text-align: center;
+	line-height: 80rpx;
+	background: #F3F3F3;
+	color: #000;
+	font-size: 28rpx;
+	padding: 0 40rpx;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	box-sizing: border-box;
+}
+.list_add2{
+	top: 0;
+}
+.btn {
+	width: 100%;
+	background: #F3F3F3;
+	z-index: 99;
+}
+.active_add {
+	width: 100%;
+	height: 140rpx;
+	padding: 0 30rpx !important;
+	box-sizing: border-box !important;
+	text-align: center;
+	line-height: 80rpx;
+	background: #F3F3F3;
+	color: #B0B0B0;
+	font-size: 28rpx;
+	/* padding: 0 40upx; */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.active_add .act_btn {
+	width: 100%;
+	height: 100%;
+	background: #F3F3F3;
+	padding: 8rpx 0 0;
+	box-sizing: border-box;
+}
+.ipt textarea {
+	width: 100%;
+	height: 70rpx;
+	background: #FFFFFF;
+	padding: 10rpx;
+	box-sizing: border-box;
+	text-align: left;
+	color: #000;
+}
+.ipt .btn_left {
+	float: left;
+	width: 50%;
+	height: 60rpx;
+	padding: 0 40rpx;
+	line-height: 60rpx;
+	box-sizing: border-box;
+	text-align: left;
+	background: #F3F3F3;
+	color: red;
+}
+.ipt .btn_right {
+	float: right;
+	width: 50%;
+	height: 60rpx;
+	line-height: 60rpx;
+	padding: 0 40rpx;
+	box-sizing: border-box;
+	text-align: right;
+	background: #F3F3F3;
+	color: red;
+}
+.box-loading2 {
+	position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	height: 1200rpx;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10rpx;
+	margin-top: 30rpx;
+	/* flex: 0 0 600upx; */
+	/* background: #040038; */
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	overflow: hidden;
+	background: #fff;
+}
+.fix2{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.4);
+	z-index: 999;
+}
+.fixed_select {
+	width: 100%;
+	height: 25%;
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: -30%;
+	background: white;
+	z-index: 1000;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+}
+.fixed_select2 {
+	width: 100%;
+	height: 25%;
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: 0;
+	background: white;
+	z-index: 51;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+}
+.fixed_select3 {
+	width: 100%;
+	height: 20%;
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: -25%;
+	background: white;
+	z-index: 1000;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+}
+.fixed_select4 {
+	width: 100%;
+	height: 20%;
+	max-width: 1280rpx;
+	position: fixed;
+	bottom: 0;
+	background: white;
+	z-index: 51;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+}
+.fixed_title {
+	display: block;
+	text-align: center;
+	font-size: 24rpx;
+	color: #333;
+	height: 70rpx;
+	line-height:70rpx;
+	background: #ececec;
+}
+.fixed_title2 {
+	display: block;
+	text-align: center;
+	font-size: 30rpx;
+	color: #333;
+	height: 70rpx;
+	line-height:70rpx;
+	/* background: #ececec; */
+	border-bottom: 2rpx solid #F3F3F3;
+}
+.select_radio {
+	position: absolute;
+	top: 70rpx;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+}
+.select_radio .vw {
+	padding: 20rpx 40rpx;
+	line-height: 40rpx;
+	/* color: #555; */
+	border-bottom: 2rpx solid #ececec;
+	/* font-size: 24upx; */
+	text-align: center;
+}
+.select_radio .vw3 {
+	padding: 20rpx 40rpx;
+	line-height: 40rpx;
+	/* color: #555; */
+	/* border-bottom: 2upx solid #ececec; */
+	/* font-size: 24upx; */
+	text-align: center;
+}
+.select_radio .vw1{
+	font-size: 32rpx;
+}
+.select_radio .vw2{
+	font-size: 28rpx;
+	color: red;
+}
+.change_title{
+	width: 100%;
+	height: 180rpx;
+	overflow: hidden;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	margin-top: 10rpx;
+}
+.change_title .ipt,.change_title2 .ipt{
+	width: 90%;
+	margin: 0 auto;
+	height: 80rpx;
+}
+.change_title .ipt input,.change_title2 .ipt input{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	padding:16rpx 20rpx;
+	box-sizing: border-box;
+	font-size: 28rpx;
+	/* line-height: 60upx; */
+}
+.change_title .ipt textarea,.change_title2 .ipt textarea{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	padding:6rpx 20rpx;
+	box-sizing: border-box;
+	font-size: 28rpx;
+	/* line-height: 60upx; */
+}
+.change_title .btn,.change_title2 .btn{
+	width: 90%;
+	margin: 30rpx auto 0;
+	height: 50rpx;
+	overflow: hidden;
+}
+.change_title .btn ._span,.change_title2 .btn ._span{
+	float: right;
+	width: 120rpx;
+	height: 50rpx;
+}
+.change_title .btn .sp2,.change_title2 .btn .sp2{
+	background: rgb(0,162,232);
+	color: #fff;
+	font-size: 26rpx;
+	text-align: center;
+	line-height:50rpx;
+	margin-left: 20rpx;
+}
+.change_title .btn .sp1,.change_title2 .btn .sp1{
+	/* background: blue; */
+	color: #ccc;
+	font-size: 26rpx;
+	text-align: center;
+	line-height: 50rpx;
+	/* margin-left: 20upx; */
+	border: 2rpx solid #CCCCCC;
+}
+.change_title2{
+	width: 100%;
+	height: 0rpx;
+	overflow: hidden;
+	-webkit-transition: all 0s;
+	-moz-transition: all 0s;
+	background: #F3F3F3;
+}
+.change_title3{
+	width: 100%;
+	height: 160rpx;
+	overflow: hidden;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	/* margin-top: 10upx; */
+	background: #F3F3F3;
+	padding: 10rpx 0;
+	box-sizing: border-box;
+}
+.change_title3 .ipt,.change_title4 .ipt{
+	width: 90%;
+	margin: 0 auto 0;
+	height: 60rpx;
+	padding: 10rpx 0;
+	box-sizing: border-box;
+}
+.change_title3 .ipt textarea,.change_title4 .ipt textarea{
+	width: 100%;
+	height: 60rpx;
+	background: #fff;
+	padding:6rpx 20rpx;
+	line-height: 48rpx;
+	box-sizing: border-box;
+	font-size: 28rpx;
+}
+.change_title3 .btn2,.change_title4 .btn2{
+	width: 90%;
+	margin: 20rpx auto 0;
+	height: 60rpx;
+	overflow: hidden;
+	padding: 0 30rpx;
+}
+.change_title3 .btn2 ._span,.change_title4 .btn2 ._span{
+	width: 100rpx;
+	height: 50rpx;
+}
+.change_title3 .btn2 .sp2,.change_title4 .btn2 .sp2{
+	/* background: rgb(0,162,232); */
+	color: red;
+	float: right;
+	font-size: 30rpx;
+	text-align: center;
+	line-height:50rpx;
+	margin-left: 20rpx;
+	height: 50rpx;
+}
+.change_title3 .btn2 .sp1,.change_title4 .btn2 .sp1{
+	color: red;
+	font-size: 30rpx;
+	text-align: center;
+	line-height: 50rpx;
+	float: left;
+}
+.change_title4{
+	width: 100%;
+	height: 0rpx;
+	overflow: hidden;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	background: #F3F3F3;
+}
+

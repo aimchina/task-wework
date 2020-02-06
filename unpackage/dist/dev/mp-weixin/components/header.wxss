@@ -4,8 +4,7 @@
 	height: 100rpx;
 	background: rgb(74,119,176);
 	padding: 0 20rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	color: #FFFFFF;
 	line-height: 100rpx;
 	position: fixed;

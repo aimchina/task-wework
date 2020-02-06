@@ -5,8 +5,7 @@
   white-space: initial;
   vertical-align: top;
   font-size: 24rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: auto;
 }
 

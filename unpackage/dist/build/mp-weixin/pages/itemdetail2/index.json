@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "tabs": "/components/wiszx-tabs/tabs",
+    "tab-pane": "/components/wiszx-tabs/tabPane",
+    "slick-item": "/node-modules/vue-slicksort/dist/vue-slicksort.umd",
+    "slick-list": "/node-modules/vue-slicksort/dist/vue-slicksort.umd",
+    "draggable": "/node-modules/vuedraggable/dist/vuedraggable.common",
+    "loading22": "/components/loading/loading22",
+    "loading13": "/components/loading/loading13",
+    "m-search": "/components/mehaotian-search/mehaotian-search"
+  }
+}

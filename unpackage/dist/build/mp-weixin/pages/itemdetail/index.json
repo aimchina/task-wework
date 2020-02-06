@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tabs": "/components/wiszx-tabs/tabs",
+    "tab-pane": "/components/wiszx-tabs/tabPane",
+    "slick-item": "/node-modules/vue-slicksort/dist/vue-slicksort.umd",
+    "slick-list": "/node-modules/vue-slicksort/dist/vue-slicksort.umd"
+  }
+}

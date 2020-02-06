@@ -1,0 +1,1 @@
+.box{width:100%;overflow:hidden}.box ._ul ._li{float:left;height:80rpx;padding:0 40rpx 0;width:100%;line-height:80rpx;font-size:28rpx;box-sizing:border-box;border-bottom:2rpx solid #f3f3f3}

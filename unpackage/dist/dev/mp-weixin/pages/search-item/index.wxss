@@ -1,0 +1,17 @@
+
+.list-item {
+	width: 100%;
+	list-style: none;
+	background-color: #fff;
+	font-size: 30rpx;
+	/* margin: 10upx 0; */
+	box-sizing: border-box;
+	padding: 20rpx;
+	overflow: hidden;
+	border-radius: 10rpx;
+	word-wrap: break-word;
+	position: relative;
+	border-bottom: 2rpx solid #F3F3F3;
+}
+
+

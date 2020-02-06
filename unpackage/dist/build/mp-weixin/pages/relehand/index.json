@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "input-box": "/components/input-box/input-box"
+  }
+}

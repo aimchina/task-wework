@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "v-edit-div": "/components/Ainput/Ainput",
+    "w-picker": "/components/w-picker/w-picker",
+    "loading13": "/components/loading/loading13"
+  }
+}
