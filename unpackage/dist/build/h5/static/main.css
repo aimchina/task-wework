@@ -2328,7 +2328,7 @@ button.cuIcon.lg {
 /* 添加项目成员头像 */
 .cu-form-group .img {
 	width: 460upx;
-	height: 80upx;
+	height: 100upx;
 	overflow: hidden;
 	display: flex;
 	justify-content: flex-end;
@@ -2339,6 +2339,7 @@ button.cuIcon.lg {
 	box-sizing: border-box;
 	text-align: right;
 	padding-right: 40upx;
+	position: relative;
 }
 /* 右箭头 */
 .cu-form-group .img::after {
@@ -2383,6 +2384,8 @@ button.cuIcon.lg {
 	font-size: 30upx;
 	color: #555;
 	padding-right: 40upx;
+	position: relative;
+	line-height: 100upx;
 }
 
 .cu-form-group .mould_name::after {
