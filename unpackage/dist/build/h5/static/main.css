@@ -2319,8 +2319,54 @@ button.cuIcon.lg {
 	justify-content: space-between;
 }
 
-.cu-form-group+.cu-form-group {
-	border-top: 1upx solid #eee;
+.cu-form-group {
+	border-bottom: 1upx solid #eee;
+}
+/* .cu-form-group+.cu-form-group {
+	border-bottom: 1upx solid #eee;
+} */
+/* 添加项目成员头像 */
+.cu-form-group .img {
+	width: 460upx;
+	height: 80upx;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 10upx 0;
+	box-sizing: border-box;
+	text-align: right;
+}
+/* 右箭头 */
+.cu-form-group .img::after {
+	font-family: cuIcon;
+	display: block;
+	content: "\e6a3";
+	position: absolute;
+	font-size: 34upx;
+	color: #8799a3;
+	line-height: 100upx;
+	width: 60upx;
+	text-align: center;
+	top: 0;
+	bottom: 0;
+	right: -20upx;
+	margin: auto;
+}
+
+.cu-form-group .img span {
+	text-align: center;
+	font-size: 26upx;
+	box-sizing: border-box;
+}
+
+.cu-form-group .img span image {
+	width: 40upx;
+	height: 40upx;
+	border-radius: 50%;
+	margin: 10upx 4upx 0;
 }
 
 .cu-form-group .title {
@@ -2331,12 +2377,34 @@ button.cuIcon.lg {
 	height: 60upx;
 	line-height: 60upx;
 }
+/* 项目模板 */
+.cu-form-group .mould_name {
+	font-size: 30upx;
+	color: #555;
+}
+
+.cu-form-group .mould_name::after {
+	font-family: cuIcon;
+	display: block;
+	content: "\e6a3";
+	position: absolute;
+	font-size: 34upx;
+	color: #8799a3;
+	line-height: 100upx;
+	width: 60upx;
+	text-align: center;
+	top: 0;
+	bottom: 0;
+	right: -20upx;
+	margin: auto;
+}
 
 .cu-form-group input {
 	flex: 1;
 	font-size: 30upx;
 	color: #555;
-	padding-right: 20upx;
+	padding-left: 30upx;
+	/* padding-right: 20upx; */
 }
 
 .cu-form-group>text[class*="cuIcon-"] {
