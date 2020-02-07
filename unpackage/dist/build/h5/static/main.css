@@ -2338,6 +2338,7 @@ button.cuIcon.lg {
 	padding: 10upx 0;
 	box-sizing: border-box;
 	text-align: right;
+	padding-right: 40upx;
 }
 /* 右箭头 */
 .cu-form-group .img::after {
@@ -2381,6 +2382,7 @@ button.cuIcon.lg {
 .cu-form-group .mould_name {
 	font-size: 30upx;
 	color: #555;
+	padding-right: 40upx;
 }
 
 .cu-form-group .mould_name::after {
