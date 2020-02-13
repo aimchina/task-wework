@@ -62,9 +62,9 @@
     "h5" : {
         "title" : "handone",
         "domain" : "",
-        "template" : "index.html",
+        "template" : "",
         "router" : {
-            "base" : "/h5"
+            "base" : "/h5/"
         }
     },
     "networkTimeout" : {

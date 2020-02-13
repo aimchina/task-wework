@@ -23,5 +23,6 @@
 	.img {
 		width: 160upx;
 		height: 120upx;
+		margin-top: 300upx;
 	}
 </style>

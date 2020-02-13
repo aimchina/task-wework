@@ -4,7 +4,7 @@
 		<!-- <view @click="btn" style="width: 100%;height: 80upx; background: red; color: #fff;">点我</view> -->
 		<view class="box" v-if="dis">
 			<view class="ctx">
-				<span>加星号的项目1</span>
+				<span>加星号的项目</span>
 			</view>
 			<view class="context">
 				<ul>
@@ -17,7 +17,7 @@
 		</view>
 		<view class="box2" v-if="dis">
 			<view class="ctx">
-				<span>我的项目1</span>
+				<span>我的项目</span>
 			</view>
 			<view class="context2">
 				<ul>
@@ -106,8 +106,8 @@
 			noData
 		},
 		onLoad(e) {
-			var ua = navigator.userAgent.toLowerCase()
-			console.log('index')
+			var ua = navigator.userAgent.toLowerCase();
+			var that = this;
 			if (ua.indexOf('iphone') != -1 || ua.indexOf('android') != -1) {
 				this.isShow_loading = true
 				var list = uni.getStorageSync('login');
@@ -130,7 +130,9 @@
 							}
 						},
 						fail: (err) => {
-							console.log(err)
+							// console.log(err)
+							alert(err)
+							that.dataImg = true;
 						}
 					})
 				} else {
@@ -168,6 +170,7 @@
 					_this.page;
 				// console.log(signStr)
 				_this.sha = hex_sha1(signStr);
+				// _this.dataImg = true;
 				console.log(_this.sha)
 				axios.get(_this.$baseUrl.tasklist.url + '?access-token=' + _this.accessToken + '&sign=' + _this.sha)
 					.then((res) => {
@@ -185,19 +188,19 @@
 								_this.dataImg = true;
 							} else {
 								_this.dis = true;
+								// _this.dataImg = false;
 								for (var i = 0; i < res.data.length; i++) {
 									if (res.data[i].t_tag == 1) {
 										_this.impList = _this.impList.concat(res.data[i])
 									}
 								}
 							}
-							
 						}
 					})
-					.catch((error) => {
-						console.log(error);
-						this.dataImg = true;
-					});
+					.catch((err) => {
+						console.log(err)
+						_this.dataImg = true
+					})
 			},
 			//删除项目
 			delItem(id) {

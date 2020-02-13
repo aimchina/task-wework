@@ -3,12 +3,12 @@
 		<view class="box-loading2" v-if="isShow_loading">
 			<Loading13></Loading13>
 		</view>
+		<view v-if="list.length">
+			<mSearch  @search="search($event)"></mSearch>
+		</view>
 		<Tabs :TabList="TabList" :currentTab="current" @tabs="tabsChange">
 			<TabPane v-for='(item,index) in list' :key='index'>
-				<view @click='search2'>
-					<mSearch  @search="search($event,0)"></mSearch>
-				</view>
-				<view class="box1">
+				<view class="box1" v-if="searchShow == false">
 					<view class="content" :style="{height:scrollHeight}">
 						<span class='spa' v-show='show != index'>
 							{{item.name}}&nbsp;{{item.task.length}}
@@ -27,7 +27,7 @@
 						</view>
 						<view class="list1">
 							<draggable v-model="item.task" @change="change" @Start="start" @End="end" class="list" :id="'itemList'+index"
-							 :style="{'height':webheight}" @update="datadragEnd" :options="{animation:300,delay:500,ghostClass:'ghostClass',dragClass:'dragClass',chosenClass: 'sortable-chosen',scroll:true, forceFallback: false}">
+							 :style="{'height':webheight}" @update="datadragEnd" :options="{animation:100,delay:300,ghostClass:'ghostClass',dragClass:'dragClass',chosenClass: 'sortable-chosen',scroll:true, forceFallback: false}">
 								<!-- <transition-group> -->
 								<div class="list-item" v-for="(item2, index2) in item.task" :key="index2" @click.stop='goitem_detail(item2.t_id)'
 								 :index="index2" @touchstart="showDeleteButton(item2.t_id)">
@@ -60,7 +60,14 @@
 						</view>
 					</view>
 				</view>
-				
+				<!-- 搜索列表 -->
+				<view class="list" v-if="searchShow == true">
+					<ul>
+						<li class='list-item' v-for ='(item,index) in searchList' :key='index' @click='godetail(item.t_id)'>
+							{{item.t_taskContent}}
+						</li>
+					</ul>
+				</view>
 				 <view :class="{'fix2':listIndex == index||isDel}"  :style="{left:index*750+'upx'}" @click="leave_list">
 					<section v-isIphoneX :class="{'fixed_select':listIndex != index,'fixed_select2':listIndex == index}" @click.stop>
 						<p class="fixed_title">{{item.name}}</p>
@@ -139,6 +146,7 @@
 	import {
 		ChangePageTitle
 	} from '../../title.js';
+	import { iscroll } from '../../iscroll.js'
 	export default {
 		data() {
 			return {
@@ -168,7 +176,9 @@
 				listIndex:99999999999,
 				isDel:false,
 				iptval:'',
-				mouldName:''
+				mouldName:'',
+				searchList:[],
+				searchShow: false
 			}
 		},
 		computed: {},
@@ -182,35 +192,73 @@
 				} else {
 					setTimeout(() => {
 						// document.body.scrollTop = document.body.scrollHeight
+						document.body.scrollIntoView()
 						this.scrollHeight = '97%'
-						this.webheight = this.windowHeight - 280 + 'upx'
+						this.webheight = this.windowHeight - 340 + 'upx'
 					}, 100)
 				}
 			}
 		},
 		methods: {
-			search(e, val) {
-				console.log(e, val);
-				this['val' + val] = e;
+			search($event) {
+				// console.log(e, val);
+				// this['val' + val] = e;
+				this.searchShow = true;
+				console.log($event)
+				let _this = this
+				if($event){
+					var signStr =
+						"access-token=" +
+						_this.accessToken +
+						"&appsercert=" +
+						_this.appsercert +
+						"&tid=" +
+						_this.tid + 
+						'&word = '+ $event;
+					// console.log(signStr)
+					_this.sha = hex_sha1(signStr);
+					console.log(_this.sha)
+					axios.get(_this.$baseUrl.missionlist.url+'?access-token='+_this.accessToken+'&sign='+_this.sha+'&tid='+_this.tid +'&word='+$event)
+						.then((res)=>{
+							console.log(res);
+							for(var item of res.data.teamtask){
+								for(var item2 of item.task){
+									console.log(item2)
+									_this.searchList.push(item2)
+								}
+							}
+						})
+						.catch((error)=> {
+							console.log(error);
+						});
+				} 
 			},
-			search2(){
-				// console.log('111')
+			godetail(id) {
+				console.log(id)
 				uni.navigateTo({
-					url:'/pages/search-item/index?id='+this.tid
+					url: '/pages/missiondetail/index?id=' + id
 				})
 			},
+			// search2(){
+			// 	// console.log('111')
+			// 	uni.navigateTo({
+			// 		url:'/pages/search-item/index?id='+this.tid
+			// 	})
+			// },
 			//处理iOS软键盘遮挡输入框
 			iosInputFocus: function() { //处理iOS软键盘遮挡输入框
-				this.userInput = true
+				this.userInput = true;
+				var that = this;
 				if (this.isIOS()) {
-					setTimeout(() => {
-						document.body.scrollTop = 0
-						this.scrollHeight = '40%'
-						this.webheight = this.windowHeight / 2 - 380 + 'upx'
-					}, 100)
+					// document.body.scrollTop = 0;
+					// document.documentElement.scrollTop = 0;
+					that.$refs.ipt[0].scrollIntoView(false);
+					// that.scrollHeight = '40%';
+					// that.webheight = that.windowHeight / 2 - 380 + 'upx';
 				} else {
-					// this.scrollHeight = '45%'
-					this.webheight = this.windowHeight / 2 - 160 + 'upx'
+					document.body.scrollIntoView();
+					// this.scrollHeight = '80%';
+					this.webheight = this.windowHeight / 2 - 220 + 'upx';
 				}
 			},
 			isIOS() {
@@ -229,7 +277,7 @@
 			active1(id) {
 				console.log(id)
 				this.active = id
-				this.webheight = this.windowHeight - 280 + 'upx'
+				// this.webheight = this.windowHeight - 280 + 'upx'
 				
 				// this.userInput = true
 				// console.log(this.$refs.ipt)
@@ -361,86 +409,93 @@
 			},
 			//添加
 			addmission(id, index) {
-				// console.log(id)
-				// console.log(index)
-				// this.add_content = this.mission_content
-				// this.Loadingindex = true
-				this.userInput = false
-				this.webheight = this.windowHeight - 240 + 'upx'
-				var obj = {
-					t_taskContent:this.mission_content
-				}
-				this.list[index].task = this.list[index].task.concat(obj)
-				this.Loadingindex = this.list[index].task.length -1
-				// setTimeout(() => {
-				// 	for (var i = 0; i < this.list[index].task.length; i++) {
-				// 		if (this.list[index].task[i].t_taskContent == res.data.t_taskContent) {
-				// 			console.log(i);
-				// 			this.Loadingindex = i
-				// 		}
-				// 	}
-				// }, 1000)
-				var signStr = 
-					"access-token=" +
-					this.accessToken +
-					"&appsercert=" +
-					this.appsercert +
-					'&t_panel_id=' +
-					id +
-					'&t_taskContent=' +
-					this.mission_content +
-					'&t_projectId=' +
-					this.tid
-				// console.log(signStr)
-				this.sha = hex_sha1(signStr);
-				console.log(this.sha)
-				this.$axios({
-						url: this.$baseUrl.addmission.url + '?access-token=' + this.accessToken + '&sign=' + this.sha,
-						method: 'post'
-					}, {
-						t_panel_id: id,
-						t_taskContent: this.mission_content,
-						t_projectId: this.tid
-					})
-					.then(res => {
-						console.log(res)
-						this.$nextTick(() => {
-							// console.log(document.getElementById('itemList'+id))
-							setTimeout(() => {
-								var ele = document.getElementById('itemList' + index)
-								console.log(ele)
-								ele.scrollTop = ele.scrollHeight;
-								
-							})
-							// this.$refs.ipt.focus()
-							// console.log(ele.scrollTop)
-							// console.log(ele.scrollHeight)
+				if(this.mission_content) {
+					// console.log(id)
+					// console.log(index)
+					// this.add_content = this.mission_content
+					// this.Loadingindex = true
+					this.userInput = false
+					this.webheight = this.windowHeight - 240 + 'upx'
+					var obj = {
+						t_taskContent:this.mission_content
+					}
+					this.list[index].task = this.list[index].task.concat(obj)
+					this.Loadingindex = this.list[index].task.length -1
+					// setTimeout(() => {
+					// 	for (var i = 0; i < this.list[index].task.length; i++) {
+					// 		if (this.list[index].task[i].t_taskContent == res.data.t_taskContent) {
+					// 			console.log(i);
+					// 			this.Loadingindex = i
+					// 		}
+					// 	}
+					// }, 1000)
+					var signStr = 
+						"access-token=" +
+						this.accessToken +
+						"&appsercert=" +
+						this.appsercert +
+						'&t_panel_id=' +
+						id +
+						'&t_taskContent=' +
+						this.mission_content +
+						'&t_projectId=' +
+						this.tid
+					// console.log(signStr)
+					this.sha = hex_sha1(signStr);
+					console.log(this.sha)
+					this.$axios({
+							url: this.$baseUrl.addmission.url + '?access-token=' + this.accessToken + '&sign=' + this.sha,
+							method: 'post'
+						}, {
+							t_panel_id: id,
+							t_taskContent: this.mission_content,
+							t_projectId: this.tid
 						})
-						
-						this.mission_content = ''
-						// this.Loadingindex = false
-						
-						
-						if (res.data.t_taskContent) {
-							// this.Loadingindex = this.list[index].task.length 
-							this.feiactive1(index)
-							// this.getlist()
-							this.list[index].task[this.list[index].task.length-1] = res.data
-							// this.list[index].task.splice(this.list[index].task.length-1,1)
-							// console.log(this.Loadingindex)
-							// setTimeout(() => {
-								this.Loadingindex = 99999999999999
-							// }, 5000)
-						} else {
-							uni.showToast({
-								title: res.data.msg,
-								icon: 'none'
+						.then(res => {
+							console.log(res)
+							this.$nextTick(() => {
+								// console.log(document.getElementById('itemList'+id))
+								setTimeout(() => {
+									var ele = document.getElementById('itemList' + index)
+									console.log(ele)
+									ele.scrollTop = ele.scrollHeight;
+									
+								})
+								// this.$refs.ipt.focus()
+								// console.log(ele.scrollTop)
+								// console.log(ele.scrollHeight)
 							})
-						}
-
-					}, (error) => {
-						console.log(error)
+							
+							this.mission_content = ''
+							// this.Loadingindex = false
+							
+							
+							if (res.data.t_taskContent) {
+								// this.Loadingindex = this.list[index].task.length 
+								this.feiactive1(index)
+								// this.getlist()
+								this.list[index].task[this.list[index].task.length-1] = res.data
+								// this.list[index].task.splice(this.list[index].task.length-1,1)
+								// console.log(this.Loadingindex)
+								// setTimeout(() => {
+									this.Loadingindex = 99999999999999
+								// }, 5000)
+							} else {
+								uni.showToast({
+									title: res.data.msg,
+									icon: 'none'
+								})
+							}
+					
+						}, (error) => {
+							console.log(error)
+						})
+				} else {
+					uni.showToast({
+						title: '任务内容不能为空',
+						icon: 'none'
 					})
+				}
 			},
 			//更多列表
 			more_list(index){
@@ -623,13 +678,34 @@
 			mSearch
 		},
 		onLoad(e) {
-			this.tid = e.id
+			var that = this;
+			var myScroll;
+			setTimeout(function() {
+				myScroll = new iScroll('itemList0',{
+					hScroll: false,
+					hScrollbar:false,
+					vScrollbar:false
+				});
+			},700)
+			this.tid = e.id;
 			uni.getSystemInfo({
 				success: (res) => {
 					this.windowHeight = res.windowHeight * 2
-					this.webheight = this.windowHeight - 240 + 'upx'
+					this.webheight = this.windowHeight - 340 + 'upx'
 				}
 			});
+			// uni.showToast({
+			// 	title: '弹起前灰色内容块高度:' + this.scrollHeight,
+			// 	icon: 'none',
+			// 	duration:2000
+			// })
+			// setTimeout(function() {
+			// 	uni.showToast({
+			// 		title: '弹起前列表高度:' + that.webheight + 'upx',
+			// 		icon: 'none',
+			// 		duration:2000
+			// 	})
+			// },2000)
 			// this.getlist()
 			this.isShow_loading = true
 			// console.log(axios)
@@ -687,7 +763,22 @@
 		height: 93%;
 		background: #fff;
 		box-sizing: border-box;
-		padding: 0  40upx 0;
+		padding: 30upx  40upx 0;
+	}
+	/* 搜索列表 */
+	.list-item {
+		width: 100%;
+		list-style: none;
+		background-color: #fff;
+		font-size: 30upx;
+		/* margin: 10upx 0; */
+		box-sizing: border-box;
+		padding: 20upx;
+		overflow: hidden;
+		border-radius: 10upx;
+		word-wrap: break-word;
+		position: relative;
+		border-bottom: 2upx solid #F3F3F3;
 	}
 	.addbox1{
 		width: 100%;
