@@ -97,6 +97,10 @@
 							this.access_token = res.data.access_token
 							this.appsercert = res.data.appsercert
 							this.uid = res.data.uid
+							uni.showToast({
+								title: 'componeyId：' + res.data.company_id,
+								icon: 'none'
+							})
 							if (this.access_token && this.appsercert && this.uid) {
 								var obj = {
 									access_token: this.access_token,

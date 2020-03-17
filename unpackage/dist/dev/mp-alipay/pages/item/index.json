@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more",
+    "loading13": "/components/loading/loading13",
+    "no-data": "/components/noData/noData"
+  }
+}

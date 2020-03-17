@@ -1,0 +1,70 @@
+
+@-webkit-keyframes spin-data-v-14cc3c78 {
+from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+}
+to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+}
+}
+@keyframes spin-data-v-14cc3c78 {
+from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+}
+to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+}
+}
+.spinner-box.data-v-14cc3c78 {
+  width: 40rpx;
+  height: 40rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #fff;
+}
+.circle-border.data-v-14cc3c78 {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 3rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-radius: 50%;
+  background: #B0B0B0;
+ background: -webkit-linear-gradient(
+    bottom,
+    rgba(190, 186, 186, 0.1) 33%,
+    rgba(190, 186, 186, 1) 100%
+  );
+ background: linear-gradient(
+    0deg,
+    rgba(190, 186, 186, 0.1) 33%,
+    rgba(190, 186, 186, 1) 100%
+  );
+  -webkit-animation: spin-data-v-14cc3c78 0.8s linear 0s infinite;
+          animation: spin-data-v-14cc3c78 0.8s linear 0s infinite;
+}
+.circle-core.data-v-14cc3c78 {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 50%;
+}
+

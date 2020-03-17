@@ -36,6 +36,10 @@
       },
       {
         "pagePath": "pages/task/index",
+        "text": "知识"
+      },
+      {
+        "pagePath": "pages/knowledge/index",
         "text": "任务"
       }
     ]

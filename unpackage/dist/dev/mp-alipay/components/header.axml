@@ -1,0 +1,1 @@
+<view><view class="header"><block a:if="{{back}}"><label data-event-opts="{{[['tap',[['goback',['$event']]]]]}}" class="sp1 _span" onTap="__e"><image src="/static/image/return.png" mode></image><label class="_span">返回</label></label></block><label class="_span">{{title}}</label><label class="sp2 _span">{{twotitle}}</label></view></view>

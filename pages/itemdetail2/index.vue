@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view class="" @touchmove.prevent>
 		<view class="box-loading2" v-if="isShow_loading">
 			<Loading13></Loading13>
 		</view>
@@ -8,7 +8,7 @@
 		</view>
 		<Tabs :TabList="TabList" :currentTab="current" @tabs="tabsChange">
 			<TabPane v-for='(item,index) in list' :key='index'>
-				<view class="box1" v-if="searchShow == false">
+				<view class="box1" v-if="searchShow == false" >
 					<view class="content" :style="{height:scrollHeight}">
 						<span class='spa' v-show='show != index'>
 							{{item.name}}&nbsp;{{item.task.length}}
@@ -25,7 +25,7 @@
 								<span class='sp1' @click='remove(index)'>取消</span>
 							</view>
 						</view>
-						<view class="list1">
+						<view class="list1" id="list1" @touchmove="touchMove">
 							<draggable v-model="item.task" @change="change" @Start="start" @End="end" class="list" :id="'itemList'+index"
 							 :style="{'height':webheight}" @update="datadragEnd" :options="{animation:100,delay:300,ghostClass:'ghostClass',dragClass:'dragClass',chosenClass: 'sortable-chosen',scroll:true, forceFallback: false}">
 								<!-- <transition-group> -->
@@ -68,7 +68,28 @@
 						</li>
 					</ul>
 				</view>
-				 <view :class="{'fix2':listIndex == index||isDel}"  :style="{left:index*750+'upx'}" @click="leave_list">
+				<!-- <uni-popup ref="popup" type="bottom">
+					<view v-isIphoneX :class="{'fixed_select':listIndex != index,'fixed_select2':listIndex == index}">
+						<p class="fixed_title">{{item.name}}</p>
+						<view class="select_radio">
+							<view class="vw1 vw" @click='choose_plate(item.id,index)'>修改板块标题</view>
+							<view class="vw2 vw"  @click='defineDel(true)'>删除板块</view>
+							<view class="kong" style="width: 100%;height: 20upx;background: #F3F3F3;"></view>
+							<view class="vw1 vw"  @click='leave_list' style="border-bottom: none;">取消</view>
+						</view>
+					</view>
+					<view v-isIphoneX :class="{'fixed_select3':!isDel,'fixed_select4':isDel}">
+						<p class="fixed_title2">是否删除此板块</p>
+						<view class="select_radio">
+							<view class="select_radio">
+								<view class="vw1 vw3" @click='del_plate(item.id)'>确定</view>
+								<view class="kong" style="width: 100%;height: 20upx;background: #F3F3F3;"></view>
+								<view class="vw2 vw3"  @click='cancel(item.id)'>取消</view>
+							</view>
+						</view>
+					</view>
+				</uni-popup> -->
+				<view :class="{'fix2':listIndex == index||isDel}"  :style="{left:index*750+'upx'}" @click="leave_list">
 					<section v-isIphoneX :class="{'fixed_select':listIndex != index,'fixed_select2':listIndex == index}" @click.stop>
 						<p class="fixed_title">{{item.name}}</p>
 						<view class="select_radio">
@@ -143,6 +164,7 @@
 	import Loading22 from "@/components/loading/loading22.vue";
 	import Loading13 from "@/components/loading/loading13.vue";
 	import mSearch from '@/components/mehaotian-search/mehaotian-search.vue';
+	import uniPopup  from '../../components/uni-popup/uni-popup.vue';
 	import {
 		ChangePageTitle
 	} from '../../title.js';
@@ -233,6 +255,11 @@
 						});
 				} 
 			},
+			touchMove() {
+				document.getElementById('list1').addEventListener('touchmove', function(e){
+					e.stopPropagation();
+				},false);
+			},
 			godetail(id) {
 				console.log(id)
 				uni.navigateTo({
@@ -257,8 +284,8 @@
 					// that.webheight = that.windowHeight / 2 - 380 + 'upx';
 				} else {
 					document.body.scrollIntoView();
-					// this.scrollHeight = '80%';
-					this.webheight = this.windowHeight / 2 - 220 + 'upx';
+					this.scrollHeight = '80%';
+					this.webheight = this.windowHeight / 2 - 240 + 'upx';
 				}
 			},
 			isIOS() {
@@ -500,7 +527,8 @@
 			//更多列表
 			more_list(index){
 				console.log(index)
-				this.listIndex = index
+				this.listIndex = index;
+				// this.$refs.popup.open();
 			},
 			//离开
 			leave_list(){
@@ -675,10 +703,16 @@
 			draggable,
 			Loading22,
 			Loading13,
-			mSearch
+			mSearch,
+			uniPopup
 		},
 		onLoad(e) {
 			var that = this;
+			//禁止页面滑动
+			document.addEventListener('touchmove', function(e){
+				e.preventDefault();
+			},false);
+			// 允许列表滑动
 			var myScroll;
 			setTimeout(function() {
 				myScroll = new iScroll('itemList0',{
@@ -694,18 +728,6 @@
 					this.webheight = this.windowHeight - 340 + 'upx'
 				}
 			});
-			// uni.showToast({
-			// 	title: '弹起前灰色内容块高度:' + this.scrollHeight,
-			// 	icon: 'none',
-			// 	duration:2000
-			// })
-			// setTimeout(function() {
-			// 	uni.showToast({
-			// 		title: '弹起前列表高度:' + that.webheight + 'upx',
-			// 		icon: 'none',
-			// 		duration:2000
-			// 	})
-			// },2000)
 			// this.getlist()
 			this.isShow_loading = true
 			// console.log(axios)
@@ -986,10 +1008,10 @@
 	}
 	.fixed_select {
 		width: 100%;
-		height: 25%;
+		height: 32%;
 		max-width: 1280upx;
 		position: fixed;
-		bottom: -30%;
+		bottom: -40%;
 		background: white;
 		z-index: 1000;
 		-webkit-transition: all .4s;
@@ -997,7 +1019,7 @@
 	}
 	.fixed_select2 {
 		width: 100%;
-		height: 25%;
+		height: 32%;
 		max-width: 1280upx;
 		position: fixed;
 		bottom: 0;
@@ -1008,10 +1030,10 @@
 	}
 	.fixed_select3 {
 		width: 100%;
-		height: 20%;
+		height: 32%;
 		max-width: 1280upx;
 		position: fixed;
-		bottom: -25%;
+		bottom: -40%;
 		background: white;
 		z-index: 1000;
 		-webkit-transition: all .4s;
@@ -1019,7 +1041,7 @@
 	}
 	.fixed_select4 {
 		width: 100%;
-		height: 20%;
+		height: 32%;
 		max-width: 1280upx;
 		position: fixed;
 		bottom: 0;

@@ -48,7 +48,7 @@
 						page: this.page
 					})
 					.then(res => {
-						// console.log(res)
+						console.log(res)
 						this.lists = res.data.items
 						// if(res.data._links.self.href.substring(res.data._links.self.href.length-1)!=this.page){
 						// 	this.status = "noMore";

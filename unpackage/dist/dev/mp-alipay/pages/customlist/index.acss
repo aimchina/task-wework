@@ -1,0 +1,18 @@
+
+.list {
+	/* margin-top: 100upx; */
+}
+.btn {
+	width: 180rpx;
+	height: 60rpx;
+	text-align: center;
+	line-height: 60rpx;
+	background: rgb(254, 148, 0);
+	color: #FFFFFF;
+	position: fixed;
+	right: 50rpx;
+	bottom: 50rpx;
+	border-radius: 16rpx;
+	font-size: 28rpx;
+}
+

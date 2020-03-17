@@ -1,0 +1,1 @@
+<view class="_div"><view class="add"><input type="number" value="{{price}}" placeholder="请输入价格" data-event-opts="{{[['input',[['__set_model',['','price','$event',[]]]]]]}}" onInput="__e"/></view><view class="btn">完成</view></view>

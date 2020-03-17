@@ -1,0 +1,1 @@
+<view class="content"><sort-picker-list class="list" onClickData="__e" vue-id="1" ref="__r" data-ref="sortPickerList" data-event-opts="{{[['^clickData',[['clickData']]]]}}" onVueInit="__l"></sort-picker-list><view data-event-opts="{{[['tap',[['goback',['$event']]]]]}}" class="btn" onTap="__e">确定</view></view>

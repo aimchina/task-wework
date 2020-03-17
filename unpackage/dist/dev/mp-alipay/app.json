@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/item/index",
+    "pages/task/index",
+    "pages/additem/index",
+    "pages/itemdetail/index",
+    "pages/missiondetail/index",
+    "pages/customlist/index",
+    "pages/addfile/index",
+    "pages/addprice/index",
+    "pages/memberlist/index",
+    "pages/know/index",
+    "pages/ceshi/index",
+    "pages/itemdetail2/index",
+    "pages/login/index",
+    "pages/mouldList/index",
+    "pages/search-item/index",
+    "pages/relehand/index"
+  ],
+  "subPackages": [],
+  "tabBar": {
+    "textColor": "#7A7E83",
+    "selectedColor": "#4f9efb",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "pages/item/index",
+        "name": "项目"
+      },
+      {
+        "pagePath": "pages/additem/index",
+        "name": "",
+        "icon": "static/image/add-btn.png",
+        "activeIcon": "static/image/add-btn.png"
+      },
+      {
+        "pagePath": "pages/task/index",
+        "name": "任务"
+      }
+    ]
+  },
+  "usingComponents": {
+    "tab-bar": "/components/tabbar",
+    "header-top": "/components/header"
+  }
+}

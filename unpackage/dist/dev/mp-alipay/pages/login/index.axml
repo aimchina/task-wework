@@ -1,0 +1,1 @@
+<view class="content"><block a:if="{{isShow_loading}}"><view class="box-loading"><loading13 vue-id="1" onVueInit="__l"></loading13></view></block></view>

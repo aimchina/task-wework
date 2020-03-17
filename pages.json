@@ -75,8 +75,13 @@
 			},
 			{
 				"pagePath": "pages/task/index",
+				"text": "知识"
+			},
+			{
+				"pagePath": "pages/knowledge/index",
 				"text": "任务"
 			}
+			
 		]
 	},
 	"condition" : { //模式配置，仅开发期间生效
