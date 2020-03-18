@@ -2,72 +2,33 @@
 	<view>
 		<scroll-view scroll-x class="color nav">
 			<view class="flex text-center">
-				<view class="cu-item flex-sub" :class="index==TabCur?'text-orange cur':''" v-for="(item,index) in list" :key="index" @tap="tabSelect" :data-id="index">
-					{{item}}
+				<view class="cu-item flex-sub text-df" :class="index==TabCur?'text-blue cur':''" v-for="(item,index) in list" :key="index" @tap="tabSelect(item.name,item.sort,item.id,index)">
+					{{item.name}}
 				</view>
 			</view>
 		</scroll-view>
-		<view class="main" v-show="TabCur == 0">
-			<view class="block" v-for="(item,index) in knowList" :key="index">
+		<view class="main">
+			<view class="block" v-for="(item,index) in itemList" :key="index" @click="goItem(item.id,item.user.t_nickname)">
 				<view class="info">
-					<text>{{item.people}}</text>
-					<text>{{item.date}}</text>
+					<text>{{item.user.t_nickname}}</text>
+					<text>{{item.add_time}}</text>
 				</view>
 				<view class="text-black message">
-					{{item.content}}
+					{{item.name}}
 				</view>
 				<view class="title">
-					{{item.text}}
+					{{item.tag}}
 				</view>
 			</view>
 		</view>
-		<view class="main" v-show="TabCur == 1">
-			<view class="block" v-for="(item,index) in kno" :key="index">
-				<view class="info">
-					<text>{{item.people}}</text>
-					<text>{{item.date}}</text>
-				</view>
-				<view class="text-black message">
-					{{item.content}}
-				</view>
-				<view class="title">
-					{{item.text}}
-				</view>
-			</view>
-		</view>
-		<view class="main" v-show="TabCur == 2">
-			<view class="block" v-for="(item,index) in knowList" :key="index">
-				<view class="info">
-					<text>{{item.people}}</text>
-					<text>{{item.date}}</text>
-				</view>
-				<view class="text-black message">
-					{{item.content}}
-				</view>
-				<view class="title">
-					{{item.text}}
-				</view>
-			</view>
-		</view>
-		<view class="main" v-show="TabCur == 3">
-			<view class="block" v-for="(item,index) in knowList" :key="index">
-				<view class="info">
-					<text>{{item.people}}</text>
-					<text>{{item.date}}</text>
-				</view>
-				<view class="text-black message">
-					{{item.content}}
-				</view>
-				<view class="title">
-					{{item.text}}
-				</view>
-			</view>
-		</view>
+		<uni-fab :content="content" :pattern="pattern" horizontal="right" vertical="bottom" direction="vertical" @trigger="trigger"></uni-fab>
 	</view>
 </template>
 
 <script>
-	import hex_sha1 from "sha1";
+	import hex_sha1 from "sha1"
+	import uniFab from '../../components/uni-fab/uni-fab.vue'
+	import {ChangePageTitle} from '../../title.js'
 	export default {
 		data() {
 			return {
@@ -76,83 +37,112 @@
 				accessToken: '64e9275246c6545a3b5d3ad060fe4c516f44d556',
 				appsercert: 'MTExMTEx',
 				sha: '',
-				list: ['全部','小程序','快递','渠道'],
-				knowList: [
+				list: [],
+				itemList: [],
+				pattern: {
+					color: '#999',
+					selectedColor: '#008eeb',
+					backgroundColor: '#fff',
+					buttonColor: '#008eeb'
+				},
+				content: [
 					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
+						iconPath: '../../static/image/jilulu.png',
+						selectedIconPath: '../../static/image/jilulu.png',
+						text: '发布',
+						active: false
 					}
-				],
-				kno: [
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
-					{
-						people: '范总',
-						date: '2019-10-18',
-						content: '服务商搜索',
-						text: '项目管理'
-					},
 				]
 			};
 		},
+		components: {
+			uniFab
+		},
 		onLoad() {
-			
+			this.getTag()
 		},
 		methods: {
-			tabSelect(e) {
-				this.TabCur = e.currentTarget.dataset.id;
+			tabSelect(keyword,sort_id,tag_id,index) {
+				this.TabCur = index;
+				console.log(keyword)
+				console.log(sort_id)
+				console.log(tag_id)
 				console.log(this.TabCur)
-				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
+				this.scrollLeft = (index - 1) * 60
+				this.getList(keyword,tag_id)
+			},
+			goItem(id,name) {
+				uni.navigateTo({
+					url: '../knowItem/knowItem?id=' + id + '&name=' + name
+				})
 			},
 			getTag() {
-				var signStr ="access-token=" + this.accessToken + "&appsercert=" + this.appsercert + "&company_id=handone" ;
-				this.sha = hex_sha1(signStr);
+				uni.showLoading({})
+				var signStr ="access-token=" + this.accessToken + "&company_id=2" ;
+				console.log(signStr)
+				var sign = hex_sha1(signStr);
+				console.log(sign)
 				uni.request({
 					url: 'https://testapi.shiliucrm.com/v2/notes_tag/notes-tags',
 					method: 'GET',
 					data: {
+						company_id: '2',
 						'access-token': this.accessToken,
-						sign: this.sha,
-						company_id: 'handone'
+						sign: 'd2754e11d805db39b2ba33db9e884bae26fedbbd',
 					},
 					success: (res) => {
 						console.log(res)
+						this.list = res.data.items;
+						this.getList(this.list[0].name,this.list[0].id)
 					},
 					fail: (err) => {
 						console.log(err)
 					}
 				})
+			},
+			getList(keyword,tag_id) {
+				var signStr ="access-token=" + this.accessToken + "&keyword=" + keyword + '&tag_id=' + tag_id + '&page=1';
+				console.log(signStr)
+				var sign = hex_sha1(signStr)
+				console.log(sign)
+				uni.request({
+					url: 'https://testapi.shiliucrm.com/v2/note/notes',
+					method: 'GET',
+					data: {
+						'access-token': this.accessToken,
+						sign: sign,
+						keyword: keyword,
+						tag_id: tag_id,
+						page: 1
+					},
+					success: (res) => {
+						uni.hideLoading()
+						console.log(res)
+						this.itemList = res.data.items;
+					},
+					fail: (err) => {
+						console.log(err)
+					}
+				})
+			},
+			trigger(e) {
+				console.log(e)
+				if(e.index == 0) {
+					uni.navigateTo({
+						url: '../addKnow/addKnow'
+					})
+				}
 			}
+		},
+		onShow() {
+			document.title = 'handone'
+			ChangePageTitle('handone')
+			var list = uni.getStorageSync('login');
+			if (list) {
+				this.accessToken = list.access_token
+				this.appsercert = list.appsercert
+			}
+			this.getTag()
 		}
 	}
 </script>
@@ -182,6 +172,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: flex-start;
+		background: #fff;
 	}
 	
 	.block .info {

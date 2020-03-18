@@ -31,6 +31,18 @@
 		    "path" : "pages/know/index"
 		},
 		{
+		    "path" : "pages/knowledge/index"
+		},
+		{
+		    "path" : "pages/knowItem/knowItem"
+		},
+		{
+		    "path" : "pages/addKnow/addKnow"
+		},
+		{
+		    "path" : "pages/tag/tag"
+		},
+		{
 		    "path" : "pages/ceshi/index"
 		},
 		{
@@ -74,14 +86,13 @@
 				"text": ""
 			},
 			{
-				"pagePath": "pages/task/index",
+				"pagePath": "pages/knowledge/index",
 				"text": "知识"
 			},
 			{
-				"pagePath": "pages/knowledge/index",
+				"pagePath": "pages/task/index",
 				"text": "任务"
 			}
-			
 		]
 	},
 	"condition" : { //模式配置，仅开发期间生效
