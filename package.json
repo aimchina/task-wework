@@ -15,7 +15,7 @@
     "element-ui": "^2.10.1",
     "flyio": "^0.6.14",
     "hex-sha1": "^1.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "sha1": "^1.1.1",
     "sortablejs": "^1.10.0-rc3",
     "vue-concise-slider": "^3.4.2",
